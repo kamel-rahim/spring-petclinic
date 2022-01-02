@@ -7,7 +7,7 @@ pipeline {
       }
     }
 
-    stage('qualitie') {
+    stage('quality') {
       parallel {
         stage('quality') {
           steps {
