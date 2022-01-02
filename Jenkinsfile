@@ -9,7 +9,7 @@ pipeline {
 
     stage('qualitie') {
       parallel {
-        stage('qualitie') {
+        stage('quality') {
           steps {
             sh '''./mvnw checkstyle:checkstyle
 
