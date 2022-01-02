@@ -8,10 +8,21 @@ pipeline {
     }
 
     stage('qualitie') {
-      steps {
-        sh '''./mvnw checkstyle:checkstyle
+      parallel {
+        stage('qualitie') {
+          steps {
+            sh '''./mvnw checkstyle:checkstyle
 
 ./mvnw pmd:check'''
+          }
+        }
+
+        stage('Sonar') {
+          steps {
+            sh './mvnw clean verify sonar:sonar -Dsonar.projectKey=PetClinic'
+          }
+        }
+
       }
     }
 
