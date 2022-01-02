@@ -7,5 +7,13 @@ pipeline {
       }
     }
 
+    stage('qualitie') {
+      steps {
+        sh '''./mvnw checkstyle:checkstyle
+
+./mvnw pmd:check'''
+      }
+    }
+
   }
 }
