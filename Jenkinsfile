@@ -23,6 +23,15 @@ pipeline {
           }
         }
 
+        stage('sonar2') {
+          steps {
+            withSonarQubeEnv(installationName: 'Sonar', credentialsId: 'Sonar', envOnly: true) {
+              sh './mvnw clean verify sonar:sonar -Dsonar.projectKey=PetClinic'
+            }
+
+          }
+        }
+
       }
     }
 
