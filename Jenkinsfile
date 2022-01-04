@@ -39,5 +39,11 @@ pipeline {
       }
     }
 
+    stage('deploy') {
+      steps {
+        sh './mvnw clean deploy'
+      }
+    }
+
   }
 }
