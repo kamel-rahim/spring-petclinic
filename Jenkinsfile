@@ -17,18 +17,12 @@ pipeline {
           }
         }
 
-        stage('Sonar') {
+        stage('') {
           steps {
-            sh './mvnw clean verify sonar:sonar -Dsonar.projectKey=PetClinic'
-          }
-        }
-
-        stage('sonar2') {
-          steps {
-            withSonarQubeEnv(installationName: 'Sonar', envOnly: true) {
-              sh './mvnw clean verify sonar:sonar -Dsonar.projectKey=PetClinic'
-            }
-
+            sh '''mvn clean verify sonar:sonar \\
+  -Dsonar.projectKey=PetClinic \\
+  -Dsonar.host.url=http://sonarqube \\
+  -Dsonar.login=c5b26c41b2fe29a1b3e3649bcabc6ad984f60353'''
           }
         }
 
